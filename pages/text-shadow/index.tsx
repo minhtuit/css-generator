@@ -1,7 +1,7 @@
 import React from 'react';
 import Generator from '../../src/component/text-shadow/generator';
-import CssCode from '../../src/component/text-shadow/css-code';
 import Preview from '../../src/component/text-shadow/preview';
+import CssCode from '../../src/css-code';
 
 type TState = {
     layer: TTextShadowLayer,
@@ -44,7 +44,7 @@ class TextShadow extends React.Component< {}, TState> {
                     onChangeLayer={(layer: TTextShadowLayer) => this.setState({ layer:layer})}
                 />
                 <Preview textShadowStyle={cssStr} />
-                <CssCode textShadowStyle={cssStr} />
+                <CssCode cssStr={cssStr} />
             </div>
         );
     }

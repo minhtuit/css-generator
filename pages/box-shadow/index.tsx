@@ -1,10 +1,12 @@
 import React from 'react';
 import Generator from '../../src/component/box-shadow/generator';
+import Layer from '../../src/component/box-shadow/layer';
 import Preview from '../../src/component/box-shadow/preview';
-import CssCode from '../../src/component/box-shadow/css-code';
+import CssCode from '../../src/css-code';
 
 type TState = {
-    layer: TBoxShadowLayer,
+    layers: TBoxShadowLayer[],
+    selectedLayer: number,
 };
 
 type TBoxShadowLayer = {
@@ -17,25 +19,51 @@ type TBoxShadowLayer = {
     color: string,
 };
 
+const DEFAULT_LAYER = {
+    shiftRight: 0,
+    shiftDown: 0,
+    spread: 3,
+    blur: 5,
+    opacity: 20,
+    inset: false,
+    color: "#000000",
+};
+
 class BoxShadow extends React.Component< {}, TState> {
     constructor(props: {}) {
         super(props);
         this.state = {
-            layer: {
-                shiftRight: 0,
-                shiftDown: 0,
-                spread: 3,
-                blur: 5,
-                opacity: 20,
-                inset: false,
-                color: "#000000"
-            }
-        }
+            layers: [DEFAULT_LAYER],
+            selectedLayer: 0,
+        };
     }
 
+    handleChanageLayer = (layer: TBoxShadowLayer) => {
+        const { layers, selectedLayer } = this.state;
+        const newLayers = layers.map((item, index) => {
+            return index === selectedLayer ? layer : item;
+        });
+        this.setState({
+            layers: newLayers,
+        });
+    };
+    handleAddLayer = () => {
+        const { layers } = this.state;
+        const newLayers = layers.concat(DEFAULT_LAYER);
+        this.setState({
+            layers: newLayers,
+        });
+    };
+    
+    handleSelectLayer = (index: number) => {
+        this.setState({
+            selectedLayer: index
+        });
+    };
+
     render() {
-        const { layer } = this.state;
-        const {
+        const { layers, selectedLayer } = this.state;
+        const [{
             shiftRight,
             shiftDown,
             spread,
@@ -43,16 +71,35 @@ class BoxShadow extends React.Component< {}, TState> {
             inset,
             color,
             // opacity
-        } = layer;
+        }] = layers;
+
+        const layersStr = layers.map((item) => {
+            const {
+                shiftRight,
+                shiftDown,
+                spread,
+                blur,
+                color,
+                inset,
+            } = item;
+            return  ` ${color} ${shiftRight}px ${shiftDown}px ${blur}px ${spread}px ${inset ? 'inset' : ''};`;
+        });
+
         const cssStr =  `box-shadow: ${color} ${shiftRight}px ${shiftDown}px ${blur}px ${spread}px ${inset ? 'inset' : ''};`
+
         return(
             <div>
                 <Generator  
-                    layer={layer} 
-                    onChangeLayer={(layer: TBoxShadowLayer) => this.setState({ layer: layer }) }
+                    layer={layers[selectedLayer]} 
+                    onChangeLayer={this.handleChanageLayer}
+                />
+                <Layer
+                    layers={layersStr}
+                    onAddLayer={this.handleAddLayer}
+                    onSelecLayer={this.handleSelectLayer}
                 />
                 <Preview boxShadowStyle={cssStr} />
-                <CssCode boxShadowStyle={cssStr} />
+                <CssCode cssStr={cssStr} />
             </div>
         );
     }

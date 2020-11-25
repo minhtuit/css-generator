@@ -1,15 +1,15 @@
 import React from 'react';
 
 type TProps = {
-    boxShadowStyle: string,
+    cssStr: string,
 };
 
 const CssCode: React.FC<TProps> = (props) => {
-    const { boxShadowStyle } = props;
+    const { cssStr } = props;
     return(
         <div>
             <h1>CSS code</h1>
-            <pre>{boxShadowStyle}</pre>
+            <pre>{cssStr}</pre>
         </div>
     );
 }
