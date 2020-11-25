@@ -82,10 +82,10 @@ class BoxShadow extends React.Component< {}, TState> {
                 color,
                 inset,
             } = item;
-            return  ` ${color} ${shiftRight}px ${shiftDown}px ${blur}px ${spread}px ${inset ? 'inset' : ''};`;
+            return  ` ${color} ${shiftRight}px ${shiftDown}px ${blur}px ${spread}px ${inset ? 'inset' : ''}`;
         });
 
-        const cssStr =  `box-shadow: ${color} ${shiftRight}px ${shiftDown}px ${blur}px ${spread}px ${inset ? 'inset' : ''};`
+        const cssStr =  `box-shadow: ${layersStr.join(', ')};`;
 
         return(
             <div>
