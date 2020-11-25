@@ -12,7 +12,7 @@ const Preview: React.FC<TProps> = (props) => {
         setBackgroundColor(e.target.value);
     };
     const handleChangePreviewColor = (e) => {
-        setPreviewColor(e.target.value);
+        setPreviewColor(e.target.value);    
     };
 
     const { boxShadowStyle } = props;
@@ -31,7 +31,7 @@ const Preview: React.FC<TProps> = (props) => {
                 value={previewColor}
                 onChange={handleChangePreviewColor}
             />
-            <div className="colorPreView">
+            <div className="colorPreview">
                 <div className={ `${style.preview} preview` }/>
             </div>
             <style>

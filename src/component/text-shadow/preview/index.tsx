@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './textshadow.module.css';
 
 type TProps = {
     textShadowStyle: string,
@@ -20,11 +21,30 @@ const Preview: React.FC<TProps> = (props) => {
             <br />
             <input 
                 type="color"
+                value={backgroundColor}
+                onChange={handleChangeBackgroundColor}
             />
             <input 
                 type="color"
+                value={previewColor}
+                onChange={handleChangePreviewColor}
             />
             <br />
+            <div className="textPreview">
+                <div className={`${style.textPreview} preview`}>Hello Tu</div>
+            </div>
+            <style>
+                {`
+                    .preview {
+                        ${textShadowStyle};
+                        color: ${previewColor}
+                    }
+                    .textPreview {
+                        display: flex;
+                        background-color: ${backgroundColor}
+                    }
+                `}
+            </style>
         </div>
     );
 }

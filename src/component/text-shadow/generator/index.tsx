@@ -1,5 +1,5 @@
 import React from 'react';
-import { TTextShadowLayer } from '../../../pages/text-shadow';
+import { TTextShadowLayer } from '../../../../pages/text-shadow';
 
 type TProps = {
     layer : TTextShadowLayer,

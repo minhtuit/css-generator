@@ -1,7 +1,7 @@
 import React from 'react';
-import Generator from '../../src/component/generator';
-import Preview from '../../src/component/preview';
-import CssCode from '../../src/component/css-code';
+import Generator from '../../src/component/box-shadow/generator';
+import Preview from '../../src/component/box-shadow/preview';
+import CssCode from '../../src/component/box-shadow/css-code';
 
 type TState = {
     layer: TBoxShadowLayer,
@@ -28,7 +28,7 @@ class BoxShadow extends React.Component< {}, TState> {
                 blur: 5,
                 opacity: 20,
                 inset: false,
-                color: "#e31616"
+                color: "#000000"
             }
         }
     }

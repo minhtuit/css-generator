@@ -1,5 +1,5 @@
 import React from 'react';
-import { TBoxShadowLayer } from '../../../pages/box-shadow'
+import { TBoxShadowLayer } from '../../../../pages/box-shadow'
 
 type TProps = {
     layer: TBoxShadowLayer,

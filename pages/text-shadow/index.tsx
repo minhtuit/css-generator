@@ -1,7 +1,7 @@
 import React from 'react';
-import Generator from '../../src/component2/generator';
-import CssCode from '../../src/component2/css-code';
-import Preview from '../../src/component2/preview';
+import Generator from '../../src/component/text-shadow/generator';
+import CssCode from '../../src/component/text-shadow/css-code';
+import Preview from '../../src/component/text-shadow/preview';
 
 type TState = {
     layer: TTextShadowLayer,

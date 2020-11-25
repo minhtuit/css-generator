@@ -1,5 +1,4 @@
 import React from 'react';
-import BoxShadow from '../../../pages/box-shadow';
 
 type TProps = {
     boxShadowStyle: string,
