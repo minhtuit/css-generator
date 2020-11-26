@@ -1,11 +1,10 @@
 import React from 'react';
-import { TBoxShadowLayer } from '../../../../pages/box-shadow';
 
 type TProps = {
     layers: string[],
     onAddLayer: () => void,
     onSelecLayer: (index: number) => void,
-}
+};
 
 const Layer: React.FC<TProps> = (props) => {
     const { layers, onAddLayer, onSelecLayer } = props;
@@ -24,6 +23,6 @@ const Layer: React.FC<TProps> = (props) => {
             </div>
         </div>
     );
-}
+};
 
 export default Layer;

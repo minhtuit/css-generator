@@ -47,6 +47,11 @@ class BoxShadow extends React.Component< {}, TState> {
             layers: newLayers,
         });
     };
+
+
+    /**
+     * nối 1 phần tử vào 1 mảng và không thay đổi mảng cũ
+     */
     handleAddLayer = () => {
         const { layers } = this.state;
         const newLayers = layers.concat(DEFAULT_LAYER);
@@ -63,16 +68,7 @@ class BoxShadow extends React.Component< {}, TState> {
 
     render() {
         const { layers, selectedLayer } = this.state;
-        const [{
-            shiftRight,
-            shiftDown,
-            spread,
-            blur,
-            inset,
-            color,
-            // opacity
-        }] = layers;
-
+        
         const layersStr = layers.map((item) => {
             const {
                 shiftRight,
