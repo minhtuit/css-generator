@@ -1,33 +1,31 @@
 import React from 'react';
-import { TBorderLayer } from '../../../../pages/border';
+import { TBorder, TBorderPosition, TBorderStyle } from '../../../../pages/border';
 
 import PositionBorder from '../config-border/position-border';
 import StyleBorder from '../config-border/style-border';
 
 
 type TProps = {
-    layer: TBorderLayer,
-    onChangeLayer: (layer: TBorderLayer) => void
+    value: TBorder,
+    onChangeLayer: (layer: TBorder) => void,
 };
 
 const Border: React.FC<TProps> = (props) => {
-    const { layer, onChangeLayer } = props;
+    const { value, onChangeLayer } = props;
     const {
         width,
-        all,
         topLeft,
         topRight,
         bottomRight,
         bottomLeft,        
-    } = layer;
+    } = value;
 
     const handleChangeWidth = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-        onChangeLayer({ ...layer, width: +target.value });
+        onChangeLayer({ ...value, width: +target.value });
     };
     const handleChangeAll = ({ target }: React.ChangeEvent<HTMLInputElement>) =>{
         onChangeLayer({
-            ...layer, 
-                all: +target.value,
+            ...value, 
                 topLeft: +target.value,
                 topRight: +target.value,
                 bottomLeft: +target.value,
@@ -35,19 +33,26 @@ const Border: React.FC<TProps> = (props) => {
         });
     };
     const handleChangeTopLeft = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-        onChangeLayer({ ...layer, topLeft: +target.value });
+        onChangeLayer({ ...value, topLeft: +target.value });
     };
     const handleChangeTopRight = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-        onChangeLayer({ ...layer, topRight: +target.value });
+        onChangeLayer({ ...value, topRight: +target.value });
     };
     const handleChangeBottomRight = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-        onChangeLayer({ ...layer, bottomRight: +target.value });
+        onChangeLayer({ ...value, bottomRight: +target.value });
     };
     const handleChangeBottomLeft = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-        onChangeLayer({ ...layer, bottomLeft: +target.value });
+        onChangeLayer({ ...value, bottomLeft: +target.value });
     };
     const handleChangeColor = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-        onChangeLayer({ ...layer, color: target.value})
+        onChangeLayer({ ...value, color: target.value});
+    };
+
+    const handleChangeBorderStyle = (borderStyle: TBorderStyle) => {
+        onChangeLayer({ ...value, borderStyle: borderStyle });
+    };
+    const handleChangeBorderPosition = (borderPosition: TBorderPosition) => {
+        onChangeLayer({ ...value, borderPosition: borderPosition});
     };
 
     return (
@@ -71,9 +76,9 @@ const Border: React.FC<TProps> = (props) => {
                 onChange={handleChangeColor}
             />
             <br />
-            <StyleBorder onChangeBorderStyle={onChangeLayer} />
+            <StyleBorder onChangeBorderStyle={handleChangeBorderStyle} />
             <br />
-            <PositionBorder onChangeBorderPosition={onChangeLayer} />
+            <PositionBorder onChangeBorderPosition={handleChangeBorderPosition} />
             <label>Border Radius</label>
             <br />
             <label>All corners</label>
@@ -82,10 +87,8 @@ const Border: React.FC<TProps> = (props) => {
                 type="range"
                 max="200"
                 min="1"
-                value={all}
                 onChange={handleChangeAll}
             />
-            {all}
             <br />
             <label>Top left</label>
             <br />
@@ -135,3 +138,4 @@ const Border: React.FC<TProps> = (props) => {
 }
 
 export default Border;
+

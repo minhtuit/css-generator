@@ -8,10 +8,10 @@ type TProps = {
 const Preview: React.FC<TProps> = (props) => {
     const [backgroundColor, setBackgroundColor] = React.useState('#FFFFFF');
     const [previewColor, setPreviewColor] = React.useState('#3D9DF6');
-    const handleChangeBackgroundColor = (e) => {
+    const handleChangeBackgroundColor = (e: React.ChangeEvent<HTMLInputElement>) => {
         setBackgroundColor(e.target.value);
     };
-    const handleChangePreviewColor = (e) => {
+    const handleChangePreviewColor = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPreviewColor(e.target.value);
     };
     const { textShadowStyle } = props;

@@ -1,0 +1,29 @@
+.border {
+    display: flex;
+    flex-wrap: wrap;
+}
+.borderPosition {
+    padding: 10px;
+    text-align: center;
+    width: 30%;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #f4f5fa;
+    transition: background .3s;
+}
+.all {
+    border: 10px solid #1C6EA4;
+    background-color: #b3bcf5;
+}
+.top {
+    border-top: 10px solid #1C6EA4;
+}
+.right {
+    border-right: 10px solid #1C6EA4;
+}
+.bottom {
+    border-bottom: 10px solid #1C6EA4;
+}
+.left {
+    border-left: 10px solid #1C6EA4;
+}

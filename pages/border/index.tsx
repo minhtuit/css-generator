@@ -1,42 +1,37 @@
 import React from 'react'
-import Border from '../../src/component/border/config-border';
+import ConfigBorder from '../../src/component/border/config-border';
 import Preview from '../../src/component/border/preview';
 import CssCode from '../../src/css-code';
 
-type TState = {
-    layer: TBorderLayer,
-};
-type TBorderLayer = {
+type TBorderStyle = 'solid' | 'dotted' | 'dashed' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset';
+type TBorderPosition = 'all' | 'top' | 'right' | 'bottom' | 'left';
+
+type TBorder = {
     width: number,
-    all: number,
     topLeft: number,
     topRight: number,
     bottomRight: number,
     bottomLeft: number,
     color: string,
-    borderStyle: string,
-    borderPosition: string
+    borderStyle: TBorderStyle,
+    borderPosition: TBorderPosition,
 };
 
-class App extends React.Component< {}, TState> {
+class App extends React.Component< {}, TBorder> {
     constructor(props: {}) {
         super(props);
         this.state = {
-            layer: {
             width: 5,
-            all: 1,
             topLeft: 1,
             topRight: 1,
             bottomRight: 1,
             bottomLeft: 1,
             color: '#1C6EA4',
             borderStyle: 'solid',
-            borderPosition: '',
-            }
+            borderPosition: 'all',
         };
     }
     render() {
-        const { layer } = this.state;
         const {
             width,
             topLeft,
@@ -45,16 +40,18 @@ class App extends React.Component< {}, TState> {
             bottomLeft,
             color,
             borderStyle,
-            borderPosition
-        } = layer;
+            borderPosition,
+        } = this.state;
         const cssStr = (`
-            border ${borderPosition}: ${width}px ${borderStyle} ${color};
-            border-radius: ${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px`)
+            border${borderPosition === 'all' ? '' : `-${borderPosition}`}  : ${width}px ${borderStyle} ${color};
+            border-radius: ${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px`
+        );
+
         return(
             <div>
-                <Border 
-                    layer={layer}
-                    onChangeLayer={(layer: TBorderLayer) => this.setState({ layer: layer})}
+                <ConfigBorder 
+                    value={this.state}
+                    onChangeLayer={(value: TBorder) => this.setState(value)}
                 />
                 <Preview borderShadow={cssStr}/>
                 <CssCode cssStr={cssStr} />
@@ -64,4 +61,4 @@ class App extends React.Component< {}, TState> {
 }
 
 export default App;
-export type { TBorderLayer };
+export type { TBorder, TBorderStyle, TBorderPosition };
