@@ -9,6 +9,8 @@ const Home: NextPage = () => {
       <Link href="/box-shadow">Box Shadow</Link>
       <br />
       <Link href="/text-shadow">Text Shadow</Link>
+      <br />
+      <Link href="/border">Border</Link>
 
     </div>
   );

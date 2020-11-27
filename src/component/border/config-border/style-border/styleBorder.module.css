@@ -1,0 +1,48 @@
+.border {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.borderStyle {
+    display: flex; 
+    flex-wrap: wrap;
+    padding: 10px;
+    text-align: center;
+    width: 30%;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #f4f5fa;
+    transition: background .3s;
+}
+.solid {
+    background-color: #b3bcf5;
+    border: 10px solid #1C6EA4;
+}
+.dotted {
+    border: 10px dotted #1C6EA4;
+
+}
+.dashed {
+    border: 10px dashed #1C6EA4;
+
+}
+.double {
+    border: 10px double #1C6EA4;
+
+}
+.groove {
+    border: 10px groove #1C6EA4;
+
+}
+.ridge{
+    border: 10px ridge #1C6EA4;
+
+}
+.inset {
+    border: 10px inset #1C6EA4;
+
+}
+.outset {
+    border: 10px outset #1C6EA4;
+
+}
